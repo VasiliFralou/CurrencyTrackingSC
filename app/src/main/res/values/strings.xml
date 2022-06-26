@@ -1,13 +1,34 @@
 <resources>
 <string name="app_name">CurrencyTrackingSC</string>
 <string name="selected_item">Selected item:</string>
+    <string name="titleFragmentCurrency">Валюта:</string>
+    <string name="sortTODO">sort</string>
 
-<string-array name="currency">
-    <item>USD</item>
-    <item>EUR</item>
-    <item>RUB</item>
-    <item>UAH</item>
+    <string-array name="currency">
+    <item>AUD</item>
+    <item>BGN</item>
+    <item>CAD</item>
+    <item>CHF</item>
+    <item>CNY</item>
     <item>CZK</item>
+    <item>DKK</item>
+    <item>EUR</item>
+    <item>GBP</item>
+    <item>IRR</item>
+    <item>ISK</item>
+    <item>JPY</item>
+    <item>KGS</item>
+    <item>KWD</item>
+    <item>KZT</item>
+    <item>MDL</item>
+    <item>NOK</item>
     <item>PLN</item>
+    <item>RUB</item>
+    <item>SEK</item>
+    <item>SGD</item>
+    <item>TRY</item>
+    <item>UAH</item>
+    <item>USD</item>
+    <item>XDR</item>
 </string-array>
 </resources>

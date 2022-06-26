@@ -1,8 +1,10 @@
 package by.vfdev.currencytrackingsc.Repository
 
-import by.vfdev.currencytrackingsc.LocalModel.CurrencyLocalModel
-import by.vfdev.currencytrackingsc.RemoteModel.CurrencyRemoteModel
-import by.vfdev.currencytrackingsc.RemoteModel.CurrencyTrackingEntity
+import android.util.Log
+import androidx.lifecycle.MutableLiveData
+import by.vfdev.currencytrackingsc.LocalDataSource.CurrencyLocalModel
+import by.vfdev.currencytrackingsc.DataSourse.CurrencyRemoteModel
+import by.vfdev.currencytrackingsc.DataSourse.CurrencyTrackingEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -12,25 +14,29 @@ class CurrencyRepository @Inject constructor(
     private val currencyRemoteModel: CurrencyRemoteModel,
     private val currencyLocalModel: CurrencyLocalModel) {
 
-    suspend fun getDataCurrency(base: String) : Result<List<CurrencyTrackingEntity>> = withContext(Dispatchers.IO) {
+    suspend fun getDataCurrency(base: String) :
+            Result<CurrencyTrackingEntity> = withContext(Dispatchers.IO) {
 
-        var currencyList = currencyRemoteModel.getCurrencyRemoteModel(base)
+        var currencyItem = currencyRemoteModel.getCurrencyRemoteModel(base)
 
-        if (currencyList.isNullOrEmpty()) {
-            currencyList = currencyLocalModel.getAllCurrency()
+        if (currencyItem == null) {
+            currencyItem = currencyLocalModel.getCurrency()
         } else {
             launch {
-                updateDataCurrencyFromDB(base)
+                updateDataCurrencyFromBD(currencyItem, base)
             }
         }
-        return@withContext Result.success(currencyList)
+        return@withContext Result.success(currencyItem)
     }
 
-    private suspend fun updateDataCurrencyFromDB(base: String) : List<CurrencyTrackingEntity> {
+    private suspend fun updateDataCurrencyFromBD(currency: CurrencyTrackingEntity?, base: String) :
+            CurrencyTrackingEntity? {
 
-        val currencyList = currencyRemoteModel.getCurrencyRemoteModel(base)
-        currencyLocalModel.insertCurrency(currencyList)
+        val entityUpdate = currencyRemoteModel.getCurrencyRemoteModel(base)
+        if (currency != null) {
+            currencyLocalModel.insertCurrency(currency)
+        }
 
-        return currencyList
+        return entityUpdate
     }
 }

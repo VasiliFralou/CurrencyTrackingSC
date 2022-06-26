@@ -1,6 +1,6 @@
-package by.vfdev.currencytrackingsc.Api
+package by.vfdev.currencytrackingsc.DataSourse
 
-import by.vfdev.currencytrackingsc.RemoteModel.CurrencyTrackingEntity
+import androidx.lifecycle.MutableLiveData
 import by.vfdev.currencytrackingsc.Utils.Constants
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -12,12 +12,12 @@ import java.util.concurrent.TimeUnit
 
 interface ApiCurrency {
 
-    // https://api.apilayer.com/exchangerates_data/latest?symbols=&base=EUR&apikey=7fp5QVYyR5GfCeIDnzUCT08zHgN6DGdc
-    @Headers("apikey: 7fp5QVYyR5GfCeIDnzUCT08zHgN6DGdc")
+    // https://api.apilayer.com/exchangerates_data/latest?symbols=&base=EUR&apikey=OUJse8OIyG0YMkNLYVUORrDewbETw9IM
+    @Headers("apikey: OUJse8OIyG0YMkNLYVUORrDewbETw9IM")
     @GET("latest")
     suspend fun getCurrency(
         @Query("base") base: String
-    ) : CurrencyTrackingEntity
+    ) : CurrencyTrackingBean
 
     companion object {
         fun create(): ApiCurrency {

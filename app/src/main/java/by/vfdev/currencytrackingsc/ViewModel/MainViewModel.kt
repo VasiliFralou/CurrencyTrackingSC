@@ -4,7 +4,8 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import by.vfdev.currencytrackingsc.RemoteModel.CurrencyTrackingEntity
+import by.vfdev.currencytrackingsc.DataSourse.CurrencyTrackingEntity
+import by.vfdev.currencytrackingsc.DataSourse.Rates
 import by.vfdev.currencytrackingsc.Repository.CurrencyRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -15,25 +16,22 @@ class MainViewModel @Inject constructor(
     private val currencyRepository: CurrencyRepository) : ViewModel() {
 
         init {
-            getListCurrency()
+            getListCurrency("AUD")
         }
 
-    val currencyLive: MutableLiveData<List<CurrencyTrackingEntity>> by lazy {
-        MutableLiveData<List<CurrencyTrackingEntity>>()
+    val currencyLive: MutableLiveData<CurrencyTrackingEntity> by lazy {
+        MutableLiveData<CurrencyTrackingEntity>()
     }
 
-    var currency: String = "EUR"
+    val selectCurrency = MutableLiveData<String>()
 
-    fun getListCurrency() {
+    fun getListCurrency(currency: String) {
         viewModelScope.launch {
             val list = currencyRepository.getDataCurrency(currency)
-
             list.onSuccess {
                 currencyLive.postValue(it)
-                Log.e("!!!LIST", currencyLive.value.toString())
-
             }.onFailure {
-                currencyLive.postValue(mutableListOf())
+                currencyLive.postValue(null)
                 Log.e("!!!ErrorListCurrency", it.stackTraceToString())
             }
         }

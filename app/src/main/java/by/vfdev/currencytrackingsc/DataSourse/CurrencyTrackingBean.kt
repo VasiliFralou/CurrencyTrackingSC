@@ -1,10 +1,8 @@
-package by.vfdev.currencytrackingsc.RemoteModel
+package by.vfdev.currencytrackingsc.DataSourse
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-data class CurrencyTrackingEntity(
+class CurrencyTrackingBean(
     @SerializedName("base")
     val base: String,
     @SerializedName("date")

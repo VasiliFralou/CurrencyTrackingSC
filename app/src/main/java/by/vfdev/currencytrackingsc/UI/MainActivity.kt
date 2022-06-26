@@ -2,14 +2,17 @@ package by.vfdev.currencytrackingsc.UI
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.activity.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import by.vfdev.currencytrackingsc.DataSourse.Rates
 import by.vfdev.currencytrackingsc.R
 import by.vfdev.currencytrackingsc.ViewModel.MainViewModel
 import by.vfdev.currencytrackingsc.databinding.ActivityMainBinding
@@ -46,7 +49,11 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 parent: AdapterView<*>, view: View,
                 position: Int, id: Long) {
 
-                mainVM.currency = currency[position]
+                Log.e("POSITION", currency[position].toString())
+
+                mainVM.getListCurrency(currency[position])
+
+                // mainVM.selectCurrency.value = currency[position]
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {}
@@ -60,8 +67,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 R.id.popularFragment,
                 R.id.favoritesFragment)
         )
-
-        mainVM.getListCurrency()
     }
 
     override fun onSupportNavigateUp(): Boolean {

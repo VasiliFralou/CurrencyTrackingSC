@@ -8,8 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="mainColor">#FF1d1b1b</color>
-    <color name="secondColor">#2C2A2A</color>
+    <color name="mainColor">#3D70A3</color>
+    <color name="secondColor">#235688</color>
     <color name="theeColor">#403E3E</color>
     <color name="fourColor">#615E5E</color>
     <color name="bgPilotsListColor">#252323</color>
