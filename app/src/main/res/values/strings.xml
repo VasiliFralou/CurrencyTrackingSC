@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">CurrencyTrackingSC</string>
+<string name="app_name">CurrencyTrackingSC</string>
+<string name="selected_item">Selected item:</string>
+
+<string-array name="currency">
+    <item>USD</item>
+    <item>EUR</item>
+    <item>RUB</item>
+    <item>UAH</item>
+    <item>CZK</item>
+    <item>PLN</item>
+</string-array>
 </resources>

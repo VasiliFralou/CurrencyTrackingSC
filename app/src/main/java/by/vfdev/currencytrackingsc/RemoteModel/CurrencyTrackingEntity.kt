@@ -4,15 +4,14 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-@Entity (tableName = "currency_table")
-data class CurrencyTracking(
+data class CurrencyTrackingEntity(
     @SerializedName("base")
     val base: String,
     @SerializedName("date")
     val date: String,
     @SerializedName("rates")
-    val rates: Rates,
+    val rates: Map<String, Double>,
+    @SerializedName("success")
+    val success: Boolean,
     @SerializedName("timestamp")
-    val timestamp: Int,
-    @PrimaryKey(autoGenerate = true) val primaryKey: Int = 0
-)
+    val timestamp: Int)

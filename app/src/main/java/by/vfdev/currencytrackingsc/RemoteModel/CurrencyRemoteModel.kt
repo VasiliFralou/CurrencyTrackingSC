@@ -7,9 +7,9 @@ class CurrencyRemoteModel @Inject constructor() {
 
     private val apiCurrency = ApiCurrency.create()
 
-    suspend fun getCurrencyRemoteModel(base: String) : List<CurrencyTracking> {
+    suspend fun getCurrencyRemoteModel(base: String) : List<CurrencyTrackingEntity> {
         return try {
-            val currency: List<CurrencyTracking> = listOf(apiCurrency.getCurrency(base))
+            val currency: List<CurrencyTrackingEntity> = listOf(apiCurrency.getCurrency(base))
             currency
         } catch (e: Exception) {
             mutableListOf()

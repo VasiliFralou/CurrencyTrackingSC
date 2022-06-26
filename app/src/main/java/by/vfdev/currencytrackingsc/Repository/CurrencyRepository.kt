@@ -2,7 +2,7 @@ package by.vfdev.currencytrackingsc.Repository
 
 import by.vfdev.currencytrackingsc.LocalModel.CurrencyLocalModel
 import by.vfdev.currencytrackingsc.RemoteModel.CurrencyRemoteModel
-import by.vfdev.currencytrackingsc.RemoteModel.CurrencyTracking
+import by.vfdev.currencytrackingsc.RemoteModel.CurrencyTrackingEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -12,7 +12,7 @@ class CurrencyRepository @Inject constructor(
     private val currencyRemoteModel: CurrencyRemoteModel,
     private val currencyLocalModel: CurrencyLocalModel) {
 
-    suspend fun getDataCurrency(base: String) : Result<List<CurrencyTracking>> = withContext(Dispatchers.IO) {
+    suspend fun getDataCurrency(base: String) : Result<List<CurrencyTrackingEntity>> = withContext(Dispatchers.IO) {
 
         var currencyList = currencyRemoteModel.getCurrencyRemoteModel(base)
 
@@ -26,7 +26,7 @@ class CurrencyRepository @Inject constructor(
         return@withContext Result.success(currencyList)
     }
 
-    private suspend fun updateDataCurrencyFromDB(base: String) : List<CurrencyTracking> {
+    private suspend fun updateDataCurrencyFromDB(base: String) : List<CurrencyTrackingEntity> {
 
         val currencyList = currencyRemoteModel.getCurrencyRemoteModel(base)
         currencyLocalModel.insertCurrency(currencyList)

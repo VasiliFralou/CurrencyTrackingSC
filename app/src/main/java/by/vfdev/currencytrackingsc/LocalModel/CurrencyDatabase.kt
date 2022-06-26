@@ -5,9 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import by.vfdev.currencytrackingsc.RemoteModel.CurrencyTracking
+import by.vfdev.currencytrackingsc.RemoteModel.CurrencyTrackingEntity
 
-@Database(entities = [CurrencyTracking::class], version = 1)
+@Database(entities = [CurrencyTrackingEntity::class], version = 1)
 @TypeConverters(Converters::class)
 abstract class CurrencyDatabase : RoomDatabase() {
 

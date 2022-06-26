@@ -3,7 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ASProject/CurrencyTrackingSC/app/src/main/res/drawable/ic_popular.xml" value="0.369" />
+        <entry key="..\:/ASProject/CurrencyTrackingSC/app/src/main/res/drawable/menu_nav_selection.xml" value="0.1" />
         <entry key="..\:/ASProject/CurrencyTrackingSC/app/src/main/res/layout/activity_main.xml" value="0.36822916666666666" />
+        <entry key="..\:/ASProject/CurrencyTrackingSC/app/src/main/res/layout/fragment_favorites.xml" value="0.36822916666666666" />
+        <entry key="..\:/ASProject/CurrencyTrackingSC/app/src/main/res/layout/fragment_popular.xml" value="0.36822916666666666" />
+        <entry key="..\:/ASProject/CurrencyTrackingSC/app/src/main/res/menu/main_menu.xml" value="0.1" />
       </map>
     </option>
   </component>
