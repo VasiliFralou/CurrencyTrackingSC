@@ -1,9 +1,9 @@
-package by.vfdev.currencytrackingsc.LocalDataSource
+package by.vfdev.currencytrackingsc.LocalModel.Currency
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import by.vfdev.currencytrackingsc.DataSourse.CurrencyTrackingEntity
+import by.vfdev.currencytrackingsc.RemoteModel.Currency.CurrencyTrackingEntity
 
 @Dao
 interface ICurrencyDao {

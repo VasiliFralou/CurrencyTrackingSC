@@ -6,13 +6,11 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
-import by.vfdev.currencytrackingsc.DataSourse.Rates
 import by.vfdev.currencytrackingsc.R
 import by.vfdev.currencytrackingsc.ViewModel.MainViewModel
 import by.vfdev.currencytrackingsc.databinding.ActivityMainBinding

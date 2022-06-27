@@ -1,4 +1,4 @@
-package by.vfdev.currencytrackingsc.DataSourse
+package by.vfdev.currencytrackingsc.RemoteModel.Currency
 
 import com.google.gson.annotations.SerializedName
 

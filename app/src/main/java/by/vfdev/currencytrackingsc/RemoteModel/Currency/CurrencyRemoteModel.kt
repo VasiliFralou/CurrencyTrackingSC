@@ -1,7 +1,6 @@
-package by.vfdev.currencytrackingsc.DataSourse
+package by.vfdev.currencytrackingsc.RemoteModel.Currency
 
-import android.util.Log
-import androidx.lifecycle.MutableLiveData
+import by.vfdev.currencytrackingsc.Api.ApiCurrency
 import javax.inject.Inject
 
 class CurrencyRemoteModel @Inject constructor() {

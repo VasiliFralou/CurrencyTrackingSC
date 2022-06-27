@@ -4,12 +4,14 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import by.vfdev.currencytrackingsc.DataSourse.CurrencyTrackingEntity
-import by.vfdev.currencytrackingsc.DataSourse.Rates
+import by.vfdev.currencytrackingsc.RemoteModel.Currency.CurrencyTrackingEntity
 import by.vfdev.currencytrackingsc.Repository.CurrencyRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.coroutines.CoroutineContext
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
@@ -28,7 +30,7 @@ class MainViewModel @Inject constructor(
     fun getListCurrency(currency: String) {
         viewModelScope.launch {
             val list = currencyRepository.getDataCurrency(currency)
-            selectCurrency.value = currency
+            selectCurrency.postValue(currency)
             list.onSuccess {
                 currencyLive.postValue(it)
             }.onFailure {

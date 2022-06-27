@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
-import by.vfdev.currencytrackingsc.DataSourse.Rates
+import by.vfdev.currencytrackingsc.RemoteModel.Currency.Rates
 import by.vfdev.currencytrackingsc.R
 import by.vfdev.currencytrackingsc.databinding.ItemLayoutPopularBinding
 
@@ -28,9 +28,20 @@ class FavoritesAdapter (private val listRates: MutableList<Rates>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val item = listRates[position]
+        var favorites = false
 
         holder.binding.nameCurrencyTV.text = item.currency
         holder.binding.valueCurrencyTV.text = item.value.toString()
+
+        holder.binding.btnFavorites.setOnClickListener {
+            favorites = if (!favorites) {
+                holder.binding.btnFavorites.setBackgroundResource(R.drawable.ic_favorites)
+                true
+            } else {
+                holder.binding.btnFavorites.setBackgroundResource(R.drawable.ic_favorites_false)
+                false
+            }
+        }
     }
 
     override fun getItemCount() = listRates.size

@@ -1,14 +1,13 @@
 package by.vfdev.currencytrackingsc.UI
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
-import by.vfdev.currencytrackingsc.DataSourse.CurrencyTrackingEntity
-import by.vfdev.currencytrackingsc.DataSourse.Rates
+import by.vfdev.currencytrackingsc.RemoteModel.Currency.Rates
 import by.vfdev.currencytrackingsc.R
 import by.vfdev.currencytrackingsc.ViewModel.MainViewModel
 import by.vfdev.currencytrackingsc.databinding.FragmentPopularBinding
@@ -20,6 +19,7 @@ class PopularFragment : Fragment(R.layout.fragment_popular) {
     private val listCurrencyLive = mutableListOf<Rates>()
     private var date: String? = "-"
 
+    @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

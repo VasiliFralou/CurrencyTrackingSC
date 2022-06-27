@@ -1,10 +1,8 @@
 package by.vfdev.currencytrackingsc.Repository
 
-import android.util.Log
-import androidx.lifecycle.MutableLiveData
-import by.vfdev.currencytrackingsc.LocalDataSource.CurrencyLocalModel
-import by.vfdev.currencytrackingsc.DataSourse.CurrencyRemoteModel
-import by.vfdev.currencytrackingsc.DataSourse.CurrencyTrackingEntity
+import by.vfdev.currencytrackingsc.LocalModel.Currency.CurrencyLocalModel
+import by.vfdev.currencytrackingsc.RemoteModel.Currency.CurrencyRemoteModel
+import by.vfdev.currencytrackingsc.RemoteModel.Currency.CurrencyTrackingEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -12,7 +10,8 @@ import javax.inject.Inject
 
 class CurrencyRepository @Inject constructor(
     private val currencyRemoteModel: CurrencyRemoteModel,
-    private val currencyLocalModel: CurrencyLocalModel) {
+    private val currencyLocalModel: CurrencyLocalModel
+) {
 
     suspend fun getDataCurrency(base: String) :
             Result<CurrencyTrackingEntity> = withContext(Dispatchers.IO) {
