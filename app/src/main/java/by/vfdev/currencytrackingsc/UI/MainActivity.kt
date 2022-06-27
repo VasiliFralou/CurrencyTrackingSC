@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
                 mainVM.getListCurrency(currency[position])
 
-                // mainVM.selectCurrency.value = currency[position]
+                mainVM.selectCurrency.value = currency[position]
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {}

@@ -28,6 +28,7 @@ class MainViewModel @Inject constructor(
     fun getListCurrency(currency: String) {
         viewModelScope.launch {
             val list = currencyRepository.getDataCurrency(currency)
+            selectCurrency.value = currency
             list.onSuccess {
                 currencyLive.postValue(it)
             }.onFailure {
