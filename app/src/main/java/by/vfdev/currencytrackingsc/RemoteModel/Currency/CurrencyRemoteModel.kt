@@ -7,10 +7,10 @@ class CurrencyRemoteModel @Inject constructor() {
 
     private val apiCurrency = ApiCurrency.create()
 
-    suspend fun getCurrencyRemoteModel(base: String) : CurrencyTrackingEntity? {
+    suspend fun getCurrencyRemoteModel(base: String, symbols: String) : CurrencyTrackingEntity? {
         return try {
 
-            val bean: CurrencyTrackingBean = apiCurrency.getCurrency(base)
+            val bean: CurrencyTrackingBean = apiCurrency.getCurrency(base, symbols)
 
             val entries: List<Rates> = bean.rates.toList().map { Rates(it.first, it.second) }
 

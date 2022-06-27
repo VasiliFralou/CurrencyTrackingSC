@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
                 Log.e("POSITION", currency[position].toString())
 
-                mainVM.getListCurrency(currency[position])
+                mainVM.getListCurrency(currency[position],mainVM.symbols)
 
                 mainVM.selectCurrency.value = currency[position]
             }

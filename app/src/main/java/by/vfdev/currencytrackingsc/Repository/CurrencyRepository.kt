@@ -13,25 +13,25 @@ class CurrencyRepository @Inject constructor(
     private val currencyLocalModel: CurrencyLocalModel
 ) {
 
-    suspend fun getDataCurrency(base: String) :
+    suspend fun getDataCurrency(base: String, symbols: String) :
             Result<CurrencyTrackingEntity> = withContext(Dispatchers.IO) {
 
-        var currencyItem = currencyRemoteModel.getCurrencyRemoteModel(base)
+        var currencyItem = currencyRemoteModel.getCurrencyRemoteModel(base, symbols)
 
         if (currencyItem == null) {
             currencyItem = currencyLocalModel.getCurrency()
         } else {
             launch {
-                updateDataCurrencyFromBD(currencyItem, base)
+                updateDataCurrencyFromBD(currencyItem, base, symbols)
             }
         }
         return@withContext Result.success(currencyItem)
     }
 
-    private suspend fun updateDataCurrencyFromBD(currency: CurrencyTrackingEntity?, base: String) :
+    private suspend fun updateDataCurrencyFromBD(currency: CurrencyTrackingEntity?, base: String, symbols: String) :
             CurrencyTrackingEntity? {
 
-        val entityUpdate = currencyRemoteModel.getCurrencyRemoteModel(base)
+        val entityUpdate = currencyRemoteModel.getCurrencyRemoteModel(base, symbols)
         if (currency != null) {
             currencyLocalModel.insertCurrency(currency)
         }

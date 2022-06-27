@@ -17,8 +17,10 @@ import kotlin.coroutines.CoroutineContext
 class MainViewModel @Inject constructor(
     private val currencyRepository: CurrencyRepository) : ViewModel() {
 
+    var symbols = "BTC,FKP,HTG,KHR"
+
         init {
-            getListCurrency("AUD")
+            getListCurrency("AUD", symbols)
         }
 
     val currencyLive: MutableLiveData<CurrencyTrackingEntity> by lazy {
@@ -27,9 +29,9 @@ class MainViewModel @Inject constructor(
 
     val selectCurrency = MutableLiveData<String>()
 
-    fun getListCurrency(currency: String) {
+    fun getListCurrency(currency: String, symbols: String) {
         viewModelScope.launch {
-            val list = currencyRepository.getDataCurrency(currency)
+            val list = currencyRepository.getDataCurrency(currency, symbols)
             selectCurrency.postValue(currency)
             list.onSuccess {
                 currencyLive.postValue(it)

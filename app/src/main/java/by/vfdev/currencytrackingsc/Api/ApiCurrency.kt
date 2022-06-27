@@ -12,11 +12,12 @@ import java.util.concurrent.TimeUnit
 
 interface ApiCurrency {
 
-    // https:/api.apilayer.com/exchangerates_data/latest?symbols=&base=EUR&apikey=OUJse8OIyG0YMkNLYVUORrDewbETw9IM
-    @Headers("apikey: OUJse8OIyG0YMkNLYVUORrDewbETw9IM")
+    // https:/api.apilayer.com/exchangerates_data/latest?symbols=&base=EUR&apikey=75kUnYw9frcl47uVyKzHPHSfUwICBhv8
+    @Headers("apikey: 75kUnYw9frcl47uVyKzHPHSfUwICBhv8")
     @GET("latest")
     suspend fun getCurrency(
-        @Query("base") base: String
+        @Query("base") base: String,
+        @Query("symbols") symbols: String
     ) : CurrencyTrackingBean
 
     companion object {

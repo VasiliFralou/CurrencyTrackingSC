@@ -6,7 +6,8 @@ import by.vfdev.currencytrackingsc.RemoteModel.Currency.Rates
 
 @Entity(tableName = "currency_table")
 class CurrencyTrackingData(
-    @PrimaryKey val base: String,
+    val base: String,
     val date: String,
     val rates: List<Rates>,
-    val timestamp: Int)
+    val timestamp: Int,
+    @PrimaryKey(autoGenerate = true) val primaryKey: Int = 0)

@@ -9,7 +9,5 @@ class CurrencyTrackingBean(
     val date: String,
     @SerializedName("rates")
     val rates: Map<String, Double>,
-    @SerializedName("success")
-    val success: Boolean,
     @SerializedName("timestamp")
     val timestamp: Int)
