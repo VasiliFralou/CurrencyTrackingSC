@@ -1,6 +1,8 @@
 package by.vfdev.currencytrackingsc.Repository
 
 import by.vfdev.currencytrackingsc.LocalModel.Currency.CurrencyLocalModel
+import by.vfdev.currencytrackingsc.LocalModel.CurrencyFavorite.CurrencyFavoriteData
+import by.vfdev.currencytrackingsc.LocalModel.CurrencyFavorite.CurrencyFavoriteLocalModel
 import by.vfdev.currencytrackingsc.RemoteModel.Currency.CurrencyRemoteModel
 import by.vfdev.currencytrackingsc.RemoteModel.Currency.CurrencyTrackingEntity
 import kotlinx.coroutines.Dispatchers
@@ -10,7 +12,8 @@ import javax.inject.Inject
 
 class CurrencyRepository @Inject constructor(
     private val currencyRemoteModel: CurrencyRemoteModel,
-    private val currencyLocalModel: CurrencyLocalModel
+    private val currencyLocalModel: CurrencyLocalModel,
+    private val currencyFavoriteLocalModel: CurrencyFavoriteLocalModel
 ) {
 
     suspend fun getDataCurrency(base: String, symbols: String) :
@@ -28,6 +31,11 @@ class CurrencyRepository @Inject constructor(
         return@withContext Result.success(currencyItem)
     }
 
+    suspend fun getDataFavoriteCurrency() : MutableList<CurrencyFavoriteData> = withContext(Dispatchers.IO) {
+
+        return@withContext currencyFavoriteLocalModel.getAllFavoriteCurrency()
+    }
+
     private suspend fun updateDataCurrencyFromBD(currency: CurrencyTrackingEntity?, base: String, symbols: String) :
             CurrencyTrackingEntity? {
 
@@ -37,5 +45,9 @@ class CurrencyRepository @Inject constructor(
         }
 
         return entityUpdate
+    }
+
+    suspend fun insertCurrencyFavoriteFromDB(currency: CurrencyFavoriteData) = withContext(Dispatchers.IO) {
+        currencyFavoriteLocalModel.insertOneFavoriteCurrency(currency)
     }
 }

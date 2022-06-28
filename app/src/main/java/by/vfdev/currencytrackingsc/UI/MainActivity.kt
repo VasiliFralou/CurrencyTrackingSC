@@ -4,7 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -34,29 +35,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val currency = resources.getStringArray(R.array.currency)
-
-        val spinner = binding.spinner
-        val adapter = ArrayAdapter(this,
-            android.R.layout.simple_spinner_item, currency)
-        spinner.adapter = adapter
-
-        spinner.onItemSelectedListener = object :
-            AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>, view: View,
-                position: Int, id: Long) {
-
-                Log.e("POSITION", currency[position].toString())
-
-                mainVM.getListCurrency(currency[position],mainVM.symbols)
-
-                mainVM.selectCurrency.value = currency[position]
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {}
-        }
-
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
         bottomNavigationView.setupWithNavController(navController)
 
@@ -65,6 +43,29 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 R.id.popularFragment,
                 R.id.favoritesFragment)
         )
+
+        val currency = resources.getStringArray(R.array.currency)
+
+        val spinner = binding.spinner
+        val adapterPopular = ArrayAdapter(this,
+            android.R.layout.simple_spinner_item, currency)
+        spinner.adapter = adapterPopular
+
+        spinner.onItemSelectedListener = object :
+            AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>, view: View,
+                position: Int, id: Long) {
+                mainVM.selectCurrency.value = currency[position]
+                Log.e("!!!SELECT", mainVM.selectCurrency.value.toString())
+                Log.e("!!!SELECT", mainVM.symbolsCurrency.value.toString())
+                mainVM.getListCurrency(
+                    mainVM.selectCurrency.value.toString(),
+                    mainVM.symbolsCurrency.value.toString())
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

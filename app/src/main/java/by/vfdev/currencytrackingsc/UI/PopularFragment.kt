@@ -2,8 +2,11 @@ package by.vfdev.currencytrackingsc.UI
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -23,6 +26,10 @@ class PopularFragment : Fragment(R.layout.fragment_popular) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        mainVM.selectCurrency.observe(activity as MainActivity) { currency ->
+            binding.datePopularTV.text = "Курс 1 ${mainVM.selectCurrency.value} на : $date"
+        }
+
         mainVM.currencyLive.observe(activity as MainActivity) { list ->
             listCurrencyLive.clear()
             listCurrencyLive.addAll(list.rates)
@@ -30,11 +37,7 @@ class PopularFragment : Fragment(R.layout.fragment_popular) {
             binding.popularRV.adapter?.notifyDataSetChanged()
         }
 
-        mainVM.selectCurrency.observe(activity as MainActivity) { currency ->
-            binding.dateTV.text = "Курс 1 ${mainVM.selectCurrency.value} на : $date"
-        }
-
-        val adapter = FavoritesAdapter(listCurrencyLive)
+        val adapter = PopularAdapter(listCurrencyLive)
         binding.popularRV.adapter = adapter
         binding.popularRV.layoutManager = LinearLayoutManager(activity as MainActivity)
     }
