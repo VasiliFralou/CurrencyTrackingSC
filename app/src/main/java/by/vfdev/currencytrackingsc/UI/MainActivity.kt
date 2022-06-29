@@ -2,7 +2,6 @@ package by.vfdev.currencytrackingsc.UI
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -12,7 +11,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
-import by.vfdev.currencytrackingsc.LocalModel.CurrencyFavorite.CurrencyFavoriteData
 import by.vfdev.currencytrackingsc.R
 import by.vfdev.currencytrackingsc.ViewModel.MainViewModel
 import by.vfdev.currencytrackingsc.databinding.ActivityMainBinding
@@ -35,7 +33,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
         bottomNavigationView.setupWithNavController(navController)
 
@@ -58,11 +55,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 parent: AdapterView<*>, view: View,
                 position: Int, id: Long) {
                 mainVM.selectCurrency.value = currency[position]
-                mainVM.getListCurrency(
-                    mainVM.selectCurrency.value.toString(),
-                    mainVM.symbolsCurrency.value.toString())
-                mainVM.getListFavoriteCurrency(
-                    mainVM.selectCurrency.value.toString())
+                mainVM.getListCurrency(mainVM.selectCurrency.value.toString())
+                mainVM.getListFavoriteCurrency(mainVM.selectCurrency.value.toString())
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {}

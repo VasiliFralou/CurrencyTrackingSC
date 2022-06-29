@@ -5,13 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
-import by.vfdev.currencytrackingsc.LocalModel.CurrencyFavorite.CurrencyFavoriteData
+import by.vfdev.currencytrackingsc.LocalModel.CurrencyFavorite.CurrencyFavoriteEntity
 import by.vfdev.currencytrackingsc.RemoteModel.Currency.Rates
 import by.vfdev.currencytrackingsc.R
 import by.vfdev.currencytrackingsc.RemoteModel.Currency.CurrencyTrackingEntity
 import by.vfdev.currencytrackingsc.databinding.ItemLayoutPopularBinding
 
-class PopularAdapter (private val onClick: (base: Rates) -> Unit) :
+class PopularAdapter (private val onClick: (base: CurrencyFavoriteEntity) -> Unit) :
     RecyclerView.Adapter<PopularAdapter.ViewHolder>() {
 
     private val list: MutableList<Rates> = mutableListOf()
@@ -32,25 +32,17 @@ class PopularAdapter (private val onClick: (base: Rates) -> Unit) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val item = list[position]
-        var favorites = false
 
         holder.binding.nameCurrencyTV.text = item.currency
-        holder.binding.valueCurrencyTV.text = item.value.toString()
+        holder.binding.valueCurrencyTV.text = String.format("%.2f", item.value)
 
         holder.binding.btnFavorites.setOnClickListener {
             onClick.invoke(
-                list[holder.bindingAdapterPosition]
+                CurrencyFavoriteEntity(
+                    list[holder.bindingAdapterPosition].currency
+                )
             )
-        }
-
-        holder.binding.btnFavorites.setOnClickListener {
-            favorites = if (!favorites) {
-                holder.binding.btnFavorites.setBackgroundResource(R.drawable.ic_favorites)
-                true
-            } else {
-                holder.binding.btnFavorites.setBackgroundResource(R.drawable.ic_favorites_false)
-                false
-            }
+            holder.binding.btnFavorites.setBackgroundResource(R.drawable.ic_favorites)
         }
     }
 
@@ -59,6 +51,19 @@ class PopularAdapter (private val onClick: (base: Rates) -> Unit) :
     fun updateData(rates: CurrencyTrackingEntity) {
         list.clear()
         list.addAll(rates.rates)
+        notifyDataSetChanged()
+    }
+
+    fun updateDataSort(rates: CurrencyTrackingEntity, sort: Int) {
+        list.clear()
+        list.addAll(rates.rates)
+
+        when (sort) {
+            1 -> list.sortBy { it.currency }
+            2 -> list.sortByDescending { it.currency }
+            3 -> list.sortBy { it.value }
+            4 -> list.sortByDescending { it.value }
+        }
         notifyDataSetChanged()
     }
 }

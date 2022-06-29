@@ -13,6 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="25dp"
         android:orientation="horizontal">
 
         <TextView
@@ -37,17 +38,6 @@
             app:layout_constraintStart_toEndOf="@+id/textView"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/btnSortPopular"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="15dp"
-            android:src="@drawable/ic_popular"
-            android:background="@color/transparent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/sortTODO" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.fragment.app.FragmentContainerView

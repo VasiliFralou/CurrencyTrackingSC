@@ -12,8 +12,8 @@ import java.util.concurrent.TimeUnit
 
 interface ApiCurrency {
 
-    // https:/api.apilayer.com/exchangerates_data/latest?symbols=&base=EUR&apikey=AbU3KJUsQQRWX9O3zV46dxndBYGXpyTr
-    @Headers("apikey: AbU3KJUsQQRWX9O3zV46dxndBYGXpyTr")
+    // https:/api.apilayer.com/exchangerates_data/latest?symbols=&base=EUR&apikey=xyByYCrG6qu4wA8FxytCREfEj5VpDZ51
+    @Headers("apikey: xyByYCrG6qu4wA8FxytCREfEj5VpDZ51")
     @GET("latest")
     suspend fun getCurrency(
         @Query("base") base: String,
