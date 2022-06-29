@@ -19,26 +19,27 @@ class PopularFragment : Fragment(R.layout.fragment_popular) {
 
     private val mainVM: MainViewModel by activityViewModels()
     private val binding by viewBinding(FragmentPopularBinding::bind)
-    private val listCurrencyLive = mutableListOf<Rates>()
+//    private val listCurrencyLive = mutableListOf<Rates>()
     private var date: String? = "-"
 
     @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mainVM.selectCurrency.observe(activity as MainActivity) { currency ->
-            binding.datePopularTV.text = "Курс 1 ${mainVM.selectCurrency.value} на : $date"
-        }
+        // val adapter = PopularAdapter(listCurrencyLive)
 
-        mainVM.currencyLive.observe(activity as MainActivity) { list ->
-            listCurrencyLive.clear()
-            listCurrencyLive.addAll(list.rates)
-            date = list.date
-            binding.popularRV.adapter?.notifyDataSetChanged()
-        }
+        val adapter = PopularAdapter(
+            onClick = {
+                mainVM.insertCurrencyFavorite(it)
+            }
+        )
 
-        val adapter = PopularAdapter(listCurrencyLive)
         binding.popularRV.adapter = adapter
         binding.popularRV.layoutManager = LinearLayoutManager(activity as MainActivity)
+
+        mainVM.currencyLive.observe(activity as MainActivity) { list ->
+            (binding.popularRV.adapter as PopularAdapter).updateData(list)
+            binding.datePopularTV.text = "Курс 1 ${mainVM.selectCurrency.value} на : $date"
+        }
     }
 }

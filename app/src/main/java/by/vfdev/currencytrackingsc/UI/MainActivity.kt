@@ -12,6 +12,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import by.vfdev.currencytrackingsc.LocalModel.CurrencyFavorite.CurrencyFavoriteData
 import by.vfdev.currencytrackingsc.R
 import by.vfdev.currencytrackingsc.ViewModel.MainViewModel
 import by.vfdev.currencytrackingsc.databinding.ActivityMainBinding
@@ -57,11 +58,11 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 parent: AdapterView<*>, view: View,
                 position: Int, id: Long) {
                 mainVM.selectCurrency.value = currency[position]
-                Log.e("!!!SELECT", mainVM.selectCurrency.value.toString())
-                Log.e("!!!SELECT", mainVM.symbolsCurrency.value.toString())
                 mainVM.getListCurrency(
                     mainVM.selectCurrency.value.toString(),
                     mainVM.symbolsCurrency.value.toString())
+                mainVM.getListFavoriteCurrency(
+                    mainVM.selectCurrency.value.toString())
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {}

@@ -5,17 +5,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
+import by.vfdev.currencytrackingsc.LocalModel.CurrencyFavorite.CurrencyFavoriteData
 import by.vfdev.currencytrackingsc.RemoteModel.Currency.Rates
 import by.vfdev.currencytrackingsc.R
+import by.vfdev.currencytrackingsc.RemoteModel.Currency.CurrencyTrackingEntity
 import by.vfdev.currencytrackingsc.databinding.ItemLayoutPopularBinding
 
-class PopularAdapter (private val listRates: MutableList<Rates>) :
+class PopularAdapter (private val onClick: (base: Rates) -> Unit) :
     RecyclerView.Adapter<PopularAdapter.ViewHolder>() {
 
-        class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    private val list: MutableList<Rates> = mutableListOf()
 
-            val binding by viewBinding (ItemLayoutPopularBinding::bind)
-        }
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        val binding by viewBinding (ItemLayoutPopularBinding::bind)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -27,11 +31,17 @@ class PopularAdapter (private val listRates: MutableList<Rates>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val item = listRates[position]
+        val item = list[position]
         var favorites = false
 
         holder.binding.nameCurrencyTV.text = item.currency
         holder.binding.valueCurrencyTV.text = item.value.toString()
+
+        holder.binding.btnFavorites.setOnClickListener {
+            onClick.invoke(
+                list[holder.bindingAdapterPosition]
+            )
+        }
 
         holder.binding.btnFavorites.setOnClickListener {
             favorites = if (!favorites) {
@@ -44,5 +54,11 @@ class PopularAdapter (private val listRates: MutableList<Rates>) :
         }
     }
 
-    override fun getItemCount() = listRates.size
+    override fun getItemCount() = list.size
+
+    fun updateData(rates: CurrencyTrackingEntity) {
+        list.clear()
+        list.addAll(rates.rates)
+        notifyDataSetChanged()
+    }
 }

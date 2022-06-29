@@ -15,4 +15,5 @@ class CurrencyFavoriteLocalModel @Inject constructor(@ApplicationContext context
     suspend fun getAllFavoriteCurrency(): MutableList<CurrencyFavoriteData> {
         return database.getAllFavoriteCurrency()
     }
+
 }
