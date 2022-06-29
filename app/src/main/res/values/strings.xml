@@ -4,6 +4,11 @@
     <string name="titleFragmentCurrency">Валюта:</string>
     <string name="sortTODO">sort</string>
 
+    <string name="sortByCurrency">Валюта отсортирована по алфавиту (возврастанию)</string>
+    <string name="sortByDescendingCurrency">Валюта отсортирована по алфавиту (убыванию)</string>
+    <string name="sortByValue">Валюта отсортирована по значению (возврастанию)</string>
+    <string name="sortByDescendingValue">Валюта отсортирована по значению (убывание)</string>
+
     <string-array name="currency">
     <item>AUD</item>
     <item>BGN</item>

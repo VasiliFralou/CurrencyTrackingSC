@@ -17,6 +17,7 @@ class PopularFragment : Fragment(R.layout.fragment_popular) {
     private val mainVM: MainViewModel by activityViewModels()
     private val binding by viewBinding(FragmentPopularBinding::bind)
     private var date: String? = "-"
+    private var pos = 2
 
     @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -30,8 +31,6 @@ class PopularFragment : Fragment(R.layout.fragment_popular) {
                 mainVM.getListCurrency(mainVM.selectCurrency.value.toString())
             }
         )
-
-        var pos = 2
 
         binding.popularRV.adapter = adapter
         binding.popularRV.layoutManager = LinearLayoutManager(activity as MainActivity)
@@ -57,19 +56,19 @@ class PopularFragment : Fragment(R.layout.fragment_popular) {
             when (pos) {
                 1 -> { getSort(pos)
                     binding.btnSortPopular.setBackgroundResource(R.drawable.ic_sort_currency_up)
-                    Toast.makeText(requireActivity(), "Валюта отсортирована по алфавиту (возврастанию)", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireActivity(), R.string.sortByCurrency, Toast.LENGTH_SHORT).show()
                 }
                 2 -> { getSort(pos)
                     binding.btnSortPopular.setBackgroundResource(R.drawable.ic_sort_value_up)
-                    Toast.makeText(requireActivity(), "Валюта отсортирована по алфавиту (убыванию)", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireActivity(), R.string.sortByDescendingCurrency, Toast.LENGTH_SHORT).show()
                 }
                 3 -> { getSort(pos)
                     binding.btnSortPopular.setBackgroundResource(R.drawable.ic_sort_value_down)
-                    Toast.makeText(requireActivity(), "Валюта отсортирована по значению (возврастанию)", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireActivity(), R.string.sortByValue, Toast.LENGTH_SHORT).show()
                 }
                 else -> {
                     binding.btnSortPopular.setBackgroundResource(R.drawable.ic_sort_currency_down)
-                    Toast.makeText(requireActivity(), "Валюта отсортирована по значению (убывание)", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireActivity(), R.string.sortByDescendingValue, Toast.LENGTH_SHORT).show()
                     getSort(pos)
                     pos = 1
                 }
