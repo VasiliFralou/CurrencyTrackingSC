@@ -36,9 +36,7 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
                 (binding.favoriteRV.adapter as FavoritesAdapter).updateData(list)
                 date = list.date
                 binding.dateFavoriteTV.text = "Курс 1 ${mainVM.selectCurrency.value} на : $date"
-            } else {
-                Toast.makeText(requireActivity(), "Проверьте подключение к интернету", Toast.LENGTH_SHORT).show()
-            }
+            } else { Toast.makeText(requireActivity(), R.string.error, Toast.LENGTH_SHORT).show() }
         }
     }
 }

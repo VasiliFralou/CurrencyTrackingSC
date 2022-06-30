@@ -1,4 +1,4 @@
-package by.vfdev.currencytrackingsc.LocalModel.Currency
+package by.vfdev.currencytrackingsc.localmodel.currency
 
 import android.content.Context
 import androidx.room.Database
@@ -21,7 +21,7 @@ abstract class CurrencyDatabase : RoomDatabase() {
                 currencyDatabase = Room.databaseBuilder(
                     contextApplication,
                     CurrencyDatabase::class.java, "currency_db"
-                ).fallbackToDestructiveMigration()
+                )
                     .build()
             }
             return currencyDatabase!!

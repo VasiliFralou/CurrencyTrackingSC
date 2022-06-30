@@ -1,4 +1,4 @@
-package by.vfdev.currencytrackingsc.Api
+package by.vfdev.currencytrackingsc.api
 
 import by.vfdev.currencytrackingsc.RemoteModel.Currency.CurrencyTrackingBean
 import by.vfdev.currencytrackingsc.Utils.Constants
@@ -12,8 +12,8 @@ import java.util.concurrent.TimeUnit
 
 interface ApiCurrency {
 
-    // https:/api.apilayer.com/exchangerates_data/latest?symbols=&base=EUR&apikey=xyByYCrG6qu4wA8FxytCREfEj5VpDZ51
-    @Headers("apikey: xyByYCrG6qu4wA8FxytCREfEj5VpDZ51")
+    // https:/api.apilayer.com/exchangerates_data/latest?symbols=&base=EUR&apikey=rrUrlh8FjQSN8RHlS5tTlBQhgABEZh4L
+    @Headers("apikey: rrUrlh8FjQSN8RHlS5tTlBQhgABEZh4L")
     @GET("latest")
     suspend fun getCurrency(
         @Query("base") base: String,

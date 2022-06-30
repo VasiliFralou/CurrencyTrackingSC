@@ -1,4 +1,4 @@
-package by.vfdev.currencytrackingsc.LocalModel.CurrencyFavorite
+package by.vfdev.currencytrackingsc.localmodel.CurrencyFavorite
 
 import android.content.Context
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -8,7 +8,7 @@ class CurrencyFavoriteLocalModel @Inject constructor(@ApplicationContext context
 
     private val database = CurrencyFavoriteDatabase.getDataBase(context).currencyFavoriteDao()
 
-    fun getAllFavoriteCurrency(): MutableList<CurrencyFavoriteData> {
+    fun getAllFavoriteCurrency(): List<CurrencyFavoriteData> {
         return database.getAllFavoriteCurrency()
     }
 

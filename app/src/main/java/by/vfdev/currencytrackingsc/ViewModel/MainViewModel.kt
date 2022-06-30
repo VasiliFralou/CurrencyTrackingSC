@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import by.vfdev.currencytrackingsc.LocalModel.CurrencyFavorite.CurrencyFavoriteData
-import by.vfdev.currencytrackingsc.LocalModel.CurrencyFavorite.CurrencyFavoriteEntity
+import by.vfdev.currencytrackingsc.localmodel.CurrencyFavorite.CurrencyFavoriteData
+import by.vfdev.currencytrackingsc.localmodel.CurrencyFavorite.CurrencyFavoriteEntity
 import by.vfdev.currencytrackingsc.RemoteModel.Currency.CurrencyTrackingEntity
 import by.vfdev.currencytrackingsc.Repository.CurrencyRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,6 +15,9 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val currencyRepository: CurrencyRepository) : ViewModel() {
+
+    var date: String? = "-"
+    var pos = 2
 
     val currencyLive: MutableLiveData<CurrencyTrackingEntity> by lazy {
         MutableLiveData<CurrencyTrackingEntity>()
@@ -62,17 +65,17 @@ class MainViewModel @Inject constructor(
                 val listCurrency = currencyRepository.getDataFavoriteCurrency(selectedCurrency, stringFavoriteCurrency)
                 listCurrency
                     .onSuccess {
-                        currencyFavoriteLive.postValue(it)
+                        currencyFavoriteLive.value = it
                     }
                     .onFailure {
-                        currencyFavoriteLive.postValue(null)
+                        currencyFavoriteLive.value = null
                         Log.e("!!!ErrorListCurrency", it.stackTraceToString())
                     }
             }
         }
     }
 
-    private fun entityToString(listFavoriteCurrency: MutableList<CurrencyFavoriteData>): String {
+    private fun entityToString(listFavoriteCurrency: List<CurrencyFavoriteData>): String {
 
         val listName: MutableList<String> = mutableListOf()
         for (name in listFavoriteCurrency) {

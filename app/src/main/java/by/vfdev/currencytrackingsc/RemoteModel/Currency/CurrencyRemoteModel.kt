@@ -1,6 +1,6 @@
 package by.vfdev.currencytrackingsc.RemoteModel.Currency
 
-import by.vfdev.currencytrackingsc.Api.ApiCurrency
+import by.vfdev.currencytrackingsc.api.ApiCurrency
 import javax.inject.Inject
 
 class CurrencyRemoteModel @Inject constructor() {

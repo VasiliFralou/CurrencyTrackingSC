@@ -1,4 +1,4 @@
-package by.vfdev.currencytrackingsc.LocalModel.CurrencyFavorite
+package by.vfdev.currencytrackingsc.localmodel.CurrencyFavorite
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -14,5 +14,5 @@ interface ICurrencyFavoriteDao {
     fun deleteSelectCurrency(base: String)
 
     @Query("SELECT * FROM currency_favorite_table")
-    fun getAllFavoriteCurrency(): MutableList<CurrencyFavoriteData>
+    fun getAllFavoriteCurrency(): List<CurrencyFavoriteData>
 }

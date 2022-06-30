@@ -1,4 +1,4 @@
-package by.vfdev.currencytrackingsc.LocalModel.Currency
+package by.vfdev.currencytrackingsc.localmodel.currency
 
 import android.content.Context
 import by.vfdev.currencytrackingsc.RemoteModel.Currency.CurrencyTrackingEntity

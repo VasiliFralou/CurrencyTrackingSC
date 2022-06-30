@@ -8,6 +8,7 @@
     <string name="sortByDescendingCurrency">Валюта отсортирована по алфавиту (убыванию)</string>
     <string name="sortByValue">Валюта отсортирована по значению (возврастанию)</string>
     <string name="sortByDescendingValue">Валюта отсортирована по значению (убывание)</string>
+    <string name="error">Не удалось получить валюту! Проверьте подключение к интернету</string>
 
     <string-array name="currency">
     <item>AUD</item>

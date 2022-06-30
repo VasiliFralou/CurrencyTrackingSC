@@ -29,27 +29,25 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         )!!.findNavController()
     }
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
+    private val appBarConfiguration: AppBarConfiguration by lazy {
+        AppBarConfiguration(setOf(
+                R.id.popularFragment,
+                R.id.favoritesFragment)
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
         bottomNavigationView.setupWithNavController(navController)
 
-        appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.popularFragment,
-                R.id.favoritesFragment)
-        )
-
         val currency = resources.getStringArray(R.array.currency)
 
-        val spinner = binding.spinner
         val adapterPopular = ArrayAdapter(this,
             android.R.layout.simple_spinner_item, currency)
-        spinner.adapter = adapterPopular
+        binding.spinner.adapter = adapterPopular
 
-        spinner.onItemSelectedListener = object :
+        binding.spinner.onItemSelectedListener = object :
             AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>, view: View,

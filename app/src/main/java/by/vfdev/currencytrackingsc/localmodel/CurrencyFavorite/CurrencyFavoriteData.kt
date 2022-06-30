@@ -1,4 +1,4 @@
-package by.vfdev.currencytrackingsc.LocalModel.CurrencyFavorite
+package by.vfdev.currencytrackingsc.localmodel.CurrencyFavorite
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

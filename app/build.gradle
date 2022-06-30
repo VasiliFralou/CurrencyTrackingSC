@@ -57,6 +57,7 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:2.4.2"
     kapt("androidx.room:room-compiler:2.4.2")
     implementation("androidx.room:room-ktx:2.4.2")
+    implementation("androidx.room:room-runtime:2.4.2")
 
     // Hilt
     implementation "com.google.dagger:hilt-android:2.41"
@@ -66,8 +67,8 @@ dependencies {
     implementation 'com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.3'
 
     // Navigation
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     // ViewPager

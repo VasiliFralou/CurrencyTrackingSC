@@ -1,6 +1,5 @@
 package by.vfdev.currencytrackingsc.UI
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +15,6 @@ class FavoritesAdapter (private val onClick: (base: String) -> Unit) :
     RecyclerView.Adapter<FavoritesAdapter.ViewHolder>() {
 
     private val list: MutableList<Rates> = mutableListOf()
-    var context: Context? = null
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -25,7 +23,6 @@ class FavoritesAdapter (private val onClick: (base: String) -> Unit) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        context = parent.context
         val inflater = LayoutInflater.from(parent.context)
         val itemView = inflater.inflate(R.layout.item_layout_favorites, parent, false)
 
@@ -36,20 +33,14 @@ class FavoritesAdapter (private val onClick: (base: String) -> Unit) :
 
         val item = list[position]
 
-        holder.itemView.context
         holder.binding.nameCurrencyFavoriteTV.text = item.currency
         holder.binding.valueCurrencyFavoriteTV.text = String.format("%.2f", item.value)
 
         holder.itemView.setOnLongClickListener {
             onClick.invoke(item.currency)
-            Toast.makeText(context,"Валюта ${item.currency} удалена", Toast.LENGTH_SHORT).show()
+            Toast.makeText(holder.itemView.context,"Валюта ${item.currency} удалена", Toast.LENGTH_SHORT).show()
             return@setOnLongClickListener true
         }
-    }
-
-    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
-        super.onAttachedToRecyclerView(recyclerView)
-        context = recyclerView.context
     }
 
     override fun getItemCount() = list.size
