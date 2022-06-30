@@ -1,4 +1,4 @@
-package by.vfdev.currencytrackingsc.localmodel.CurrencyFavorite
+package by.vfdev.currencytrackingsc.localmodel.currencyfavorite
 
 import androidx.room.Dao
 import androidx.room.Insert

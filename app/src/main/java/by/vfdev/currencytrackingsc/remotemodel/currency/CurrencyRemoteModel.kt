@@ -1,4 +1,4 @@
-package by.vfdev.currencytrackingsc.RemoteModel.Currency
+package by.vfdev.currencytrackingsc.remotemodel.currency
 
 import by.vfdev.currencytrackingsc.api.ApiCurrency
 import javax.inject.Inject

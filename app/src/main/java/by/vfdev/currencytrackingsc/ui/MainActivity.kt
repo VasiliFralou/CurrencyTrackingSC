@@ -1,4 +1,4 @@
-package by.vfdev.currencytrackingsc.UI
+package by.vfdev.currencytrackingsc.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,7 +12,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.currencytrackingsc.R
-import by.vfdev.currencytrackingsc.ViewModel.MainViewModel
+import by.vfdev.currencytrackingsc.viewmodel.MainViewModel
 import by.vfdev.currencytrackingsc.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint

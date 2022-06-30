@@ -1,7 +1,7 @@
 package by.vfdev.currencytrackingsc.localmodel.currency
 
 import android.content.Context
-import by.vfdev.currencytrackingsc.RemoteModel.Currency.CurrencyTrackingEntity
+import by.vfdev.currencytrackingsc.remotemodel.currency.CurrencyTrackingEntity
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 

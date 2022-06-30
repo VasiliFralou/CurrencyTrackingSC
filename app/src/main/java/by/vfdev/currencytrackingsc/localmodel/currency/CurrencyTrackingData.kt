@@ -2,7 +2,7 @@ package by.vfdev.currencytrackingsc.localmodel.currency
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import by.vfdev.currencytrackingsc.RemoteModel.Currency.Rates
+import by.vfdev.currencytrackingsc.remotemodel.currency.Rates
 
 @Entity(tableName = "currency_table")
 class CurrencyTrackingData(

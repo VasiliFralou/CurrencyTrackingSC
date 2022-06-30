@@ -1,11 +1,11 @@
-package by.vfdev.currencytrackingsc.Repository
+package by.vfdev.currencytrackingsc.repository
 
 import by.vfdev.currencytrackingsc.localmodel.currency.CurrencyLocalModel
-import by.vfdev.currencytrackingsc.localmodel.CurrencyFavorite.CurrencyFavoriteData
-import by.vfdev.currencytrackingsc.localmodel.CurrencyFavorite.CurrencyFavoriteEntity
-import by.vfdev.currencytrackingsc.localmodel.CurrencyFavorite.CurrencyFavoriteLocalModel
-import by.vfdev.currencytrackingsc.RemoteModel.Currency.CurrencyRemoteModel
-import by.vfdev.currencytrackingsc.RemoteModel.Currency.CurrencyTrackingEntity
+import by.vfdev.currencytrackingsc.localmodel.currencyfavorite.CurrencyFavoriteData
+import by.vfdev.currencytrackingsc.localmodel.currencyfavorite.CurrencyFavoriteEntity
+import by.vfdev.currencytrackingsc.localmodel.currencyfavorite.CurrencyFavoriteLocalModel
+import by.vfdev.currencytrackingsc.remotemodel.currency.CurrencyRemoteModel
+import by.vfdev.currencytrackingsc.remotemodel.currency.CurrencyTrackingEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

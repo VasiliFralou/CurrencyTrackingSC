@@ -1,7 +1,7 @@
 package by.vfdev.currencytrackingsc.api
 
-import by.vfdev.currencytrackingsc.RemoteModel.Currency.CurrencyTrackingBean
-import by.vfdev.currencytrackingsc.Utils.Constants
+import by.vfdev.currencytrackingsc.remotemodel.currency.CurrencyTrackingBean
+import by.vfdev.currencytrackingsc.utils.Constants
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

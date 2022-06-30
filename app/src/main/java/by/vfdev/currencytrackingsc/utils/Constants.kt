@@ -1,4 +1,4 @@
-package by.vfdev.currencytrackingsc.Utils
+package by.vfdev.currencytrackingsc.utils
 
 class Constants {
 

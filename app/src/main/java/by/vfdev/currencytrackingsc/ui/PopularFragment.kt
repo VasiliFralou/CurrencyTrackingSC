@@ -1,4 +1,4 @@
-package by.vfdev.currencytrackingsc.UI
+package by.vfdev.currencytrackingsc.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -9,7 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.currencytrackingsc.R
-import by.vfdev.currencytrackingsc.ViewModel.MainViewModel
+import by.vfdev.currencytrackingsc.viewmodel.MainViewModel
 import by.vfdev.currencytrackingsc.databinding.FragmentPopularBinding
 
 class PopularFragment : Fragment(R.layout.fragment_popular) {

@@ -1,7 +1,7 @@
-package by.vfdev.currencytrackingsc.Utils
+package by.vfdev.currencytrackingsc.utils
 
 import androidx.room.TypeConverter
-import by.vfdev.currencytrackingsc.RemoteModel.Currency.Rates
+import by.vfdev.currencytrackingsc.remotemodel.currency.Rates
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

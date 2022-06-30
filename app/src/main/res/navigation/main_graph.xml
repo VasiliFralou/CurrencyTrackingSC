@@ -8,12 +8,12 @@
 
     <fragment
         android:id="@+id/popularFragment"
-        android:name="by.vfdev.currencytrackingsc.UI.PopularFragment"
+        android:name="by.vfdev.currencytrackingsc.ui.PopularFragment"
         android:label="fragment_popular"
         tools:layout="@layout/fragment_popular" />
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="by.vfdev.currencytrackingsc.UI.FavoritesFragment"
+        android:name="by.vfdev.currencytrackingsc.ui.FavoritesFragment"
         android:label="fragment_favorites"
         tools:layout="@layout/fragment_favorites" />
 </navigation>

@@ -1,4 +1,4 @@
-package by.vfdev.currencytrackingsc.UI
+package by.vfdev.currencytrackingsc.ui
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +7,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import by.vfdev.currencytrackingsc.R
-import by.vfdev.currencytrackingsc.RemoteModel.Currency.CurrencyTrackingEntity
-import by.vfdev.currencytrackingsc.RemoteModel.Currency.Rates
+import by.vfdev.currencytrackingsc.remotemodel.currency.CurrencyTrackingEntity
+import by.vfdev.currencytrackingsc.remotemodel.currency.Rates
 import by.vfdev.currencytrackingsc.databinding.ItemLayoutFavoritesBinding
 
 class FavoritesAdapter (private val onClick: (base: String) -> Unit) :

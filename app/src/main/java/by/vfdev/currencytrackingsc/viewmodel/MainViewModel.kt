@@ -1,13 +1,13 @@
-package by.vfdev.currencytrackingsc.ViewModel
+package by.vfdev.currencytrackingsc.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import by.vfdev.currencytrackingsc.localmodel.CurrencyFavorite.CurrencyFavoriteData
-import by.vfdev.currencytrackingsc.localmodel.CurrencyFavorite.CurrencyFavoriteEntity
-import by.vfdev.currencytrackingsc.RemoteModel.Currency.CurrencyTrackingEntity
-import by.vfdev.currencytrackingsc.Repository.CurrencyRepository
+import by.vfdev.currencytrackingsc.localmodel.currencyfavorite.CurrencyFavoriteData
+import by.vfdev.currencytrackingsc.localmodel.currencyfavorite.CurrencyFavoriteEntity
+import by.vfdev.currencytrackingsc.remotemodel.currency.CurrencyTrackingEntity
+import by.vfdev.currencytrackingsc.repository.CurrencyRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

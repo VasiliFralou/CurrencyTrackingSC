@@ -1,14 +1,14 @@
-package by.vfdev.currencytrackingsc.UI
+package by.vfdev.currencytrackingsc.ui
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
-import by.vfdev.currencytrackingsc.localmodel.CurrencyFavorite.CurrencyFavoriteEntity
-import by.vfdev.currencytrackingsc.RemoteModel.Currency.Rates
+import by.vfdev.currencytrackingsc.localmodel.currencyfavorite.CurrencyFavoriteEntity
+import by.vfdev.currencytrackingsc.remotemodel.currency.Rates
 import by.vfdev.currencytrackingsc.R
-import by.vfdev.currencytrackingsc.RemoteModel.Currency.CurrencyTrackingEntity
+import by.vfdev.currencytrackingsc.remotemodel.currency.CurrencyTrackingEntity
 import by.vfdev.currencytrackingsc.databinding.ItemLayoutPopularBinding
 
 class PopularAdapter (private val onClick: (base: CurrencyFavoriteEntity) -> Unit) :

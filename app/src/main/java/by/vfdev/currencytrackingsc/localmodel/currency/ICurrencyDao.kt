@@ -3,7 +3,7 @@ package by.vfdev.currencytrackingsc.localmodel.currency
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import by.vfdev.currencytrackingsc.RemoteModel.Currency.CurrencyTrackingEntity
+import by.vfdev.currencytrackingsc.remotemodel.currency.CurrencyTrackingEntity
 
 @Dao
 interface ICurrencyDao {
