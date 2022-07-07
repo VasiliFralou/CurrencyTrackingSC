@@ -9,11 +9,11 @@ class CurrencyLocalModel @Inject constructor(@ApplicationContext context: Contex
 
     private val database = CurrencyDatabase.getDataBase(context).getCurrencyDao()
 
-    fun getCurrency() : CurrencyTrackingEntity {
+    suspend fun getCurrency() : CurrencyTrackingEntity {
         return database.getAllCurrency()
     }
 
-    fun insertCurrency(currency: CurrencyTrackingEntity) {
+    suspend fun insertCurrency(currency: CurrencyTrackingEntity) {
 
         val entity = CurrencyTrackingData(
             base = currency.base,

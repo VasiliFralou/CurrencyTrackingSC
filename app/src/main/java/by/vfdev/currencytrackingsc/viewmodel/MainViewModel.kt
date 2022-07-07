@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import by.vfdev.currencytrackingsc.localmodel.currencyfavorite.CurrencyFavoriteData
 import by.vfdev.currencytrackingsc.localmodel.currencyfavorite.CurrencyFavoriteEntity
 import by.vfdev.currencytrackingsc.remotemodel.currency.CurrencyTrackingEntity
+import by.vfdev.currencytrackingsc.repository.CurrencyFavoriteRepository
 import by.vfdev.currencytrackingsc.repository.CurrencyRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -14,7 +15,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val currencyRepository: CurrencyRepository) : ViewModel() {
+    private val currencyRepository: CurrencyRepository,
+    private val currencyFavoriteRepository: CurrencyFavoriteRepository
+) : ViewModel() {
 
     var date: String? = "-"
     var pos = 2
@@ -32,11 +35,11 @@ class MainViewModel @Inject constructor(
     fun getListCurrency(currency: String) {
         viewModelScope.launch {
             val list = currencyRepository.getDataCurrency(currency, "")
-            selectCurrency.postValue(currency)
+            selectCurrency.value = currency
             list.onSuccess {
-                currencyLive.postValue(it)
+                currencyLive.value = it
             }.onFailure {
-                currencyLive.postValue(null)
+                currencyLive.value = null
                 Log.e("!!!ErrorListCurrency", it.stackTraceToString())
             }
         }
@@ -44,25 +47,26 @@ class MainViewModel @Inject constructor(
 
     fun insertCurrencyFavorite(currency: CurrencyFavoriteEntity) {
         viewModelScope.launch {
-            currencyRepository.insertCurrencyFavoriteFromDB(currency)
+            currencyFavoriteRepository.insertCurrencyFavoriteFromDB(currency)
         }
     }
 
     fun deleteSelectCurrency(base: String) {
         viewModelScope.launch {
-            currencyRepository.deleteSelectCurrency(base)
+            currencyFavoriteRepository.deleteSelectCurrency(base)
         }
     }
 
     fun getListFavoriteCurrency(selectedCurrency: String) {
         viewModelScope.launch {
 
-            val listFavoriteCurrency = currencyRepository.getDataFavoriteCurrency()
+            val listFavoriteCurrency = currencyFavoriteRepository.getDataFavoriteCurrency()
             val stringFavoriteCurrency = entityToString(listFavoriteCurrency)
 
-            symbolsFavorite.postValue(stringFavoriteCurrency)
+            symbolsFavorite.value = stringFavoriteCurrency
             if (!stringFavoriteCurrency.isNullOrEmpty()) {
-                val listCurrency = currencyRepository.getDataFavoriteCurrency(selectedCurrency, stringFavoriteCurrency)
+                val listCurrency = currencyFavoriteRepository.getDataFavoriteCurrency(
+                    selectedCurrency, stringFavoriteCurrency)
                 listCurrency
                     .onSuccess {
                         currencyFavoriteLive.value = it

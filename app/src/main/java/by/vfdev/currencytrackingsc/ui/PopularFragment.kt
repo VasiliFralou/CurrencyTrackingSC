@@ -43,7 +43,7 @@ class PopularFragment : Fragment(R.layout.fragment_popular) {
 
         fun sortList(sort: Int) {
             mainVM.currencyLive.observe(viewLifecycleOwner) { list ->
-                (binding.popularRV.adapter as PopularAdapter).updateDataSort(list, sort)
+                adapter.updateDataSort(list, sort)
             }
         }
 

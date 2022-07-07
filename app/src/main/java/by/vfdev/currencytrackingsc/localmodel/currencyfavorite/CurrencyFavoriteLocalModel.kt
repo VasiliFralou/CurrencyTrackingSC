@@ -8,11 +8,11 @@ class CurrencyFavoriteLocalModel @Inject constructor(@ApplicationContext context
 
     private val database = CurrencyFavoriteDatabase.getDataBase(context).currencyFavoriteDao()
 
-    fun getAllFavoriteCurrency(): List<CurrencyFavoriteData> {
+    suspend fun getAllFavoriteCurrency(): List<CurrencyFavoriteData> {
         return database.getAllFavoriteCurrency()
     }
 
-    fun insertOneFavoriteCurrency(favorite: CurrencyFavoriteEntity) {
+    suspend fun insertOneFavoriteCurrency(favorite: CurrencyFavoriteEntity) {
 
         val entity = CurrencyFavoriteData(
             base = favorite.base)
@@ -20,7 +20,7 @@ class CurrencyFavoriteLocalModel @Inject constructor(@ApplicationContext context
         database.insertOneFavoriteCurrency(entity)
     }
 
-    fun deleteSelectCurrency(base: String) {
+    suspend fun deleteSelectCurrency(base: String) {
         database.deleteSelectCurrency(base)
     }
 }

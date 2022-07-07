@@ -9,11 +9,11 @@ import by.vfdev.currencytrackingsc.remotemodel.currency.CurrencyTrackingEntity
 interface ICurrencyDao {
 
     @Insert
-    fun insertCurrency(currency: CurrencyTrackingData)
+    suspend fun insertCurrency(currency: CurrencyTrackingData)
 
     @Query("SELECT * FROM currency_table")
-    fun getAllCurrency() : CurrencyTrackingEntity
+    suspend fun getAllCurrency() : CurrencyTrackingEntity
 
     @Query("DELETE FROM currency_table")
-    fun deleteAllCurrency()
+    suspend fun deleteAllCurrency()
 }

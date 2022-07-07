@@ -13,8 +13,7 @@ import javax.inject.Inject
 
 class CurrencyRepository @Inject constructor(
     private val currencyRemoteModel: CurrencyRemoteModel,
-    private val currencyLocalModel: CurrencyLocalModel,
-    private val currencyFavoriteLocalModel: CurrencyFavoriteLocalModel
+    private val currencyLocalModel: CurrencyLocalModel
 ) {
 
     suspend fun getDataCurrency(base: String, symbols: String) :
@@ -32,19 +31,6 @@ class CurrencyRepository @Inject constructor(
         return@withContext Result.success(currencyItem)
     }
 
-    suspend fun getDataFavoriteCurrency(base: String, symbols: String) :
-            Result<CurrencyTrackingEntity?> = withContext(Dispatchers.IO) {
-
-        val currencyItem = currencyRemoteModel.getCurrencyRemoteModel(base, symbols)
-
-        return@withContext Result.success(currencyItem)
-    }
-
-    suspend fun getDataFavoriteCurrency() : List<CurrencyFavoriteData> = withContext(Dispatchers.IO) {
-
-        return@withContext currencyFavoriteLocalModel.getAllFavoriteCurrency()
-    }
-
     private suspend fun updateDataCurrencyFromBD(currency: CurrencyTrackingEntity?, base: String, symbols: String) :
             CurrencyTrackingEntity? {
 
@@ -54,13 +40,5 @@ class CurrencyRepository @Inject constructor(
         }
 
         return entityUpdate
-    }
-
-    suspend fun insertCurrencyFavoriteFromDB(currency: CurrencyFavoriteEntity) = withContext(Dispatchers.IO) {
-        currencyFavoriteLocalModel.insertOneFavoriteCurrency(currency)
-    }
-
-    suspend fun deleteSelectCurrency(base: String) = withContext(Dispatchers.IO) {
-        currencyFavoriteLocalModel.deleteSelectCurrency(base)
     }
 }

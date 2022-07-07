@@ -33,7 +33,7 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
 
         mainVM.currencyFavoriteLive.observe(viewLifecycleOwner) { list ->
             if (list != null) {
-                (binding.favoriteRV.adapter as FavoritesAdapter).updateData(list)
+                adapter.updateData(list)
                 date = list.date
                 binding.dateFavoriteTV.text = "Курс 1 ${mainVM.selectCurrency.value} на : $date"
             } else { Toast.makeText(requireActivity(), R.string.error, Toast.LENGTH_SHORT).show() }

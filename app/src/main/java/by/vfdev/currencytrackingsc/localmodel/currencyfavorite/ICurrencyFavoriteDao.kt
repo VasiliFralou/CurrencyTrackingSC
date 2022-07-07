@@ -8,11 +8,11 @@ import androidx.room.Query
 interface ICurrencyFavoriteDao {
 
     @Insert
-    fun insertOneFavoriteCurrency(favorite: CurrencyFavoriteData)
+    suspend fun insertOneFavoriteCurrency(favorite: CurrencyFavoriteData)
 
     @Query("DELETE FROM currency_favorite_table WHERE :base LIKE base")
-    fun deleteSelectCurrency(base: String)
+    suspend fun deleteSelectCurrency(base: String)
 
     @Query("SELECT * FROM currency_favorite_table")
-    fun getAllFavoriteCurrency(): List<CurrencyFavoriteData>
+    suspend fun getAllFavoriteCurrency(): List<CurrencyFavoriteData>
 }
